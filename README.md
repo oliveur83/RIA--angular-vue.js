@@ -2,6 +2,7 @@
 # Mon Repository
 
 Ce repository contient deux projets distincts basés sur Angular et Vue respectivement.
+quand au dossier RIA il contient le backend de app avec codeligner
 
 ## Projet Angular
 
