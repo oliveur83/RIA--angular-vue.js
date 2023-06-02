@@ -1,0 +1,56 @@
+- ² Créer des étudiants
+- ² Créer des enseignants
+- ² Gérer son profil
+- ² Créer un cours
+- ² Ajouter des élèves à ses cours
+- ² Noter ses étudiants
+- ² Consulter son service
+- saisir une maquette, c’est-à-dire compléter tous les Unités d’Enseignement d’un diplôme
+o une UE est composée d’élément constitutif qui sont des cours
+- ² réaliser un emploi du temps
+- ²a ffecter un service aux enseignants
+etudiant:
+- ²Gérer son profil
+- ²Consulter son emploi du temps
+- ²Consulter ses notes
+
+Une maquette décrit un diplôme avec :
+- ²Un nom
+- ²Un descriptif
+- ²Un niveau de formation* L / M / D
+- ²Un nombre d’année
+- ²Des unités d’enseignement** décomposées en cours, TD, TP
+- ²Un responsable pédagogique
+- ²Des enseignants
+- ²Des étudiants
+- ²Une période de validité dite période d’accréditation.
+enseignant
+- ²Son adresse mail
+- ²Son nom et prénom son mot de passe
+- ²Son numéro de téléphone
+- ²Ses enseignements (ses cours)
+- ²Le volume horaire qu’il doit effectuer :
+o Doctorant 64h
+o Vacataire 98h
+o ATER, Maitre de conférences, Professeur 192h
+o PRAG 384h
+- ² Une responsabilité (directeur des études, doyen, directeur d’unité, responsable de projet,
+directeur de département)
+
+Un étudiant est caractérisé par :
+-² Un numéro
+- ²Son nom et prénom son mot de passe
+- ²Son ancien diplôme
+- ²deux mails perso et universitaire
+- ²Son numéro de téléphone
+-² Sa filière
+
+-² Afficher la liste des étudiants
+- ²Afficher la liste des diplômes
+- ²Afficher les notes d’un étudiant
+- ²Afficher l’emploi du temps d’une filière
+- ²Gérer son profil
+- ²Saisir une maquette
+- ²Saisir un emploi du temps
+- ²Saisir des notes
+- ²Etc.
