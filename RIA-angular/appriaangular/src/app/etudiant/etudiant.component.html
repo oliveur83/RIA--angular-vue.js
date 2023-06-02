@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ma page</title>
+
+</head>
+<body>
+  <div class="container">
+    <h2>compte étudiant:</h2>
+    <p>Nom d'utilisateur: {{ username }}</p>
+    <p>Votre numéro d'identification: {{ id }}</p>
+
+    <button (click)="notes()">Voir tes notes</button>
+  
+    <button (click)="EDT()">Emploi du temps</button>
+
+    <!-- Pour les notes -->
+    
+    <table *ngIf="showNotesFlag ">
+      <thead>
+        <tr>
+          <th>Note</th>
+          <th>Nom du cours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of users">
+          <td>{{ item.note }}</td>
+          <td>{{ item.nom_cours }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table *ngIf="showNotesFlag">
+      <thead>
+        <tr>
+          <th>Nom du cours</th>
+          <th>Moyenne</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cours of moyennes | keyvalue">
+          <td>{{ cours.key }}</td>
+          <td>{{ cours.value }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+
+  
+    <table [hidden]="!showEDTFlag">
+      <thead>
+        <tr>
+          <th>nom Cours</th>
+          <th>type</th>
+          <th>Date Début</th>
+          <th>Date Fin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of edt">
+          <td>{{ item.nom_cours }}</td>
+          <td>{{ item.type_cours }}</td>
+          <td>{{ item.date_debut }}</td>
+          <td>{{ item.date_fin }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+</body>
+</html>

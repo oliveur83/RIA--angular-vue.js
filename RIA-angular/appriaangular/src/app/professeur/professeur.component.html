@@ -1,0 +1,67 @@
+<body>
+  <div class="container">
+    <h2>compte professeur :</h2>
+<p>Nom d'utilisateur: {{ username }}</p>
+<p>votre numero identification : {{ id }}</p>
+<!-- voir ces cours ,mettre des note modifier ces info  -->
+<button (click)="EDT()">votre emploie du temps</button>
+<button (click)="note()">mettre des notes </button>
+<button (click)="liste_etudiant()">liste de ces eleve </button>
+
+<table *ngIf="afficher_edt_for">
+  <thead>
+    <tr>
+      <th>ID Cours</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of edt">
+      <td>{{ item.id_cours }}</td>
+      <td>{{ item.date_debut }}</td>
+      <td>{{ item.date_fin }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<ul *ngIf="afficher_note_for">
+    <form (ngSubmit)="mettre_note()">
+        <label>
+         id de votre cours :
+          <input type="text" name="username" [(ngModel)]="id_cours">
+        </label>
+        <label>
+          id de l'étudiant 
+          <input type="text" name="password" [(ngModel)]="id_utilisateur">
+        </label>
+        <label>
+            note de l'étudiant 
+            <input type="text" name="password" [(ngModel)]="notee">
+          </label>
+        <button type="submit">Valider</button>
+      </form>
+</ul>
+
+
+<table *ngIf="afficher_liste_for">
+  <thead>
+    <tr>
+      <th>ID Etudiant</th>
+      <th>nom cours </th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of edt">
+      <td>{{ item.id_etudiant }}</td>
+      <td>{{ item.nom_cours }}</td>
+     
+    </tr>
+  </tbody>
+</table>
+
+
+</div>
+</body>

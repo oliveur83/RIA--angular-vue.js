@@ -1,0 +1,537 @@
+<h1>Vous êtes sur la page administrateur</h1>
+<h2>Tout est possible</h2>
+<h2>pour la visualisation </h2>
+<div class="button-container">
+  <button (click)="getListe('util')">Voir tous les utilisateurs</button>
+  <button (click)="getListe('ens')">Voir tous les enseignants</button>
+  <button (click)="getListe('etud')">Voir tous les étudiants</button>
+</div>
+
+<div class="button-container">
+  <button (click)="getListe('fill')">Voir toutes les filières</button>
+  <button (click)="getListe('cours')">Voir tous les cours</button>
+  <button (click)="getListe('ue')">Voir toutes les UE</button>
+</div>
+<button (click)="getListe('edt')">Voir toutes edt</button>
+
+<table *ngIf="affichage == 'util'">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Rôle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of liste">
+      <td>{{ item.id_utilisateur }}</td>
+      <td>{{ item.nom }}</td>
+      <td>{{ item.prenom }}</td>
+      <td>{{ item.role }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table *ngIf="affichage == 'ens'">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Matricule</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of liste">
+      <td>{{ item.nom }}</td>
+      <td>{{ item.prenom }}</td>
+      <td>{{ item.matricule }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table *ngIf="affichage == 'etud'">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Numéro étudiant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of liste">
+      <td>{{ item.nom }}</td>
+      <td>{{ item.prenom }}</td>
+      <td>{{ item.numero_etudiant }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table *ngIf="affichage == 'fill'">
+  <thead>
+    <tr>
+      <th>ID Filière</th>
+      <th>Nom Filière</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of liste">
+      <td>{{ item.id_filiere }}</td>
+      <td>{{ item.nom_filiere }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table *ngIf="affichage == 'cours'">
+  <thead>
+    <tr>
+      <th>ID Cours</th>
+      <th>Nom Cours</th>
+      <th>Libellé UE</th>
+      <th>Nom</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of liste">
+      <td>{{ item.id_cours }}</td>
+      <td>{{ item.nom_cours }}</td>
+      <td>{{ item.libelle_ue }}</td>
+      <td>{{ item.nom }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table *ngIf="affichage == 'ue'">
+  <thead>
+    <tr>
+      <th>Libellé UE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of liste">
+      <td>{{ item.libelle_ue }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table *ngIf="affichage == 'edt'">
+  <thead>
+    <tr>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of liste">
+      <td>{{ item.date_debut }}</td>
+      <td>{{ item.date_fin }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h2>pour ajouter </h2>
+<div class="button-container">
+  <button (click)="ajouter_for('ens')">Ajouter un enseignant</button>
+  <button (click)="ajouter_for('etud')">Ajouter un étudiant</button>
+  <button (click)="ajouter_for('util')">Ajouter un utilisateur </button>
+</div>
+
+<div class="button-container">
+  <button (click)="ajouter_for('fill')">Ajouter une filliere</button>
+  <button (click)="ajouter_for('ue')">Ajouter un ue </button>
+  <button (click)="ajouter_for('cours')">ajouter un cours </button>
+</div>
+<div class="button-container">
+  <button (click)="ajouter_for('edt')">Ajouter un evenement </button>
+  <button (click)="ajouter_for('etud_cours')">Ajouter un etudiant a un cours  </button>
+</div>
+
+<ul *ngIf="formulaire_ajout == 'util'">
+  <form (ngSubmit)=" valide_for('util')">
+    <label for="nom">Nom:</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="nom" id="nom">
+    <br>
+    <label for="prenom">prenom:</label>
+    <input type="prenom"  [ngModelOptions]="{standalone: true}" [(ngModel)]="prenom" id="prenom">
+    <br>
+    <label for="role">role:</label>
+    <input type="role"  [ngModelOptions]="{standalone: true}" [(ngModel)]="role" id="role">
+    <br>
+    <label for="email">Email:</label>
+    <input type="email"  [ngModelOptions]="{standalone: true}" [(ngModel)]="email" id="email">
+    <br>
+    <label for="password">Mot de passe:</label>
+    <input type="password"  [ngModelOptions]="{standalone: true}" [(ngModel)]="mot_de_passe" id="mot_de_passe">
+    <br>
+    <label for="tel">tel:</label>
+    <input type="tel"  [ngModelOptions]="{standalone: true}" [(ngModel)]="tel" id="tel">
+    <br>
+    <input type="submit" value="Ajouter utilisateur">
+  </form>
+ </ul>
+<ul *ngIf="formulaire_ajout == 'etud'">
+  <form (ngSubmit)=" valide_for('etud')">
+    <label for="id_utilisateur">id_utilisateur:</label>
+<input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_utilisateur" id="id_utilisateur">
+<br>
+<label for="diplome_etudiant">diplome_etudiant:</label>
+<input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="diplome_etudiant" id="diplome_etudiant">
+<br>
+<label for="id_filiere">id_filiere:</label>
+<input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_filiere" id="id_filiere">
+<br>
+
+
+<input type="submit" value="Ajouter utilisateur">
+  </form>
+ </ul>
+ <ul *ngIf="formulaire_ajout == 'ens'"> 
+  <form (ngSubmit)=" valide_for('ens')">
+          <label for="nom">id_utilisateur:</label>
+      <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_utilisateur" id="id_utilisateur">
+      <br>
+      <label for="description">respon sabilité:</label>
+      <input type="responsabilite_ens"  [ngModelOptions]="{standalone: true}" [(ngModel)]="responsabilite_ens" id="responsabilite_ens">
+      <br>
+      <label for="volume_horaire">nombre_heure:</label>
+      <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="volume_horaire" id="volume_horaire">
+      <br>
+      <input type="submit" value="Ajouter utilisateur">
+  </form>
+</ul>
+ <ul *ngIf="formulaire_ajout == 'fill'">
+  <form (ngSubmit)=" valide_for('fill')">
+    <label for="nom">Nom:</label>
+<input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="nom" id="nom">
+<br>
+<label for="description">description:</label>
+<input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="description" id="description">
+<br>
+<label for="id_responsable">responsable(id):</label>
+<input type="id_responsable"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_responsable" id="id_responsable">
+<br>
+<label for="niveau">niveau:</label>
+<input type="niveau"  [ngModelOptions]="{standalone: true}" [(ngModel)]="niveau" id="niveau">
+<br>
+<label for="nombre_annee">nombre_annee:</label>
+<input type="nombre_annee"  [ngModelOptions]="{standalone: true}" [(ngModel)]="nombre_annee" id="nombre_annee">
+<br>
+<input type="submit" value="Ajouter utilisateur">
+  </form>
+ </ul>
+ <ul *ngIf="formulaire_ajout == 'cours'">
+  <form (ngSubmit)=" valide_for('cours')">
+    <label for="id_enseignant">id_enseignant:</label>
+<input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_enseignant" id="id_enseignant">
+<br>
+<label for="id_ue">id_ue:</label>
+<input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_ue" id="id_ue">
+<br>
+<label for="nom_cours">nom cours:</label>
+<input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="nom_cours" id="nom_cours">
+<br>
+
+
+<input type="submit" value="Ajouter utilisateur">
+  </form>
+ </ul>
+
+ <ul *ngIf="formulaire_ajout == 'ue'">
+  <form (ngSubmit)=" valide_for('ue')">
+        <label for="description">description:</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="description" id="description">
+    <br>
+    <label for="id_filiere">id_filiere:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_filiere" id="id_filiere">
+    <br>
+    <label for="libelle_ue">libelle_ue:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="libelle_ue" id="libelle_ue">
+    <br>
+
+
+    <input type="submit" value="Ajouter utilisateur">
+  </form>
+ </ul>
+ <ul *ngIf="formulaire_ajout == 'edt'">
+  <form (ngSubmit)=" valide_for('edt')">
+    <label for="id_filiere">id_filiere:</label>
+<input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_filiere" id="id_filiere">
+<br>
+<label for="id_cours">id_cours:</label>
+<input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_cours" id="id_cours">
+<br>
+<label for="date_debut">date_debut:</label>
+<input type="date"  [ngModelOptions]="{standalone: true}" [(ngModel)]="date_debut" id="date_debut">
+<br>
+<label for="date_fin">date_fin:</label>
+<input type="date"  [ngModelOptions]="{standalone: true}" [(ngModel)]="date_fin" id="date_fin">
+<br>
+<label for="type_cours">type_cours:</label>
+<input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="type_cours" id="type_cours">
+<br>
+
+
+<input type="submit" value="Ajouter utilisateur">
+  </form>
+ </ul>
+ <ul *ngIf="formulaire_ajout == 'etud_cours'">
+  <form (ngSubmit)=" valide_for('etud_cours')">
+    <label for="id_etudiant">id_etudiant:</label>
+<input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_etudiant" id="id_etudiant">
+<br>
+<label for="id_cours">id_cours:</label>
+<input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_cours" id="id_cours">
+<br>
+
+<input type="submit" value="Ajouter utilisateur">
+  </form>
+ </ul>
+
+
+
+<h2>pour modification </h2>
+<button (click)="modifier_for('util')">Modifier un utilisateur </button>
+  
+<div class="button-container">
+  <button (click)="modifier_for('etud')">Modifier un etudiant </button>
+  <button (click)="modifier_for('prof')">Modifier un enseignant </button>
+  <button (click)="modifier_for('fil')">Modifier une filiere </button>
+</div>
+<div class="button-container">
+  <button (click)="modifier_for('cours')">Modifier un cours </button>
+  <button (click)="modifier_for('ue')">Modifier une UE </button>
+  <button (click)="modifier_for('edt')">Modifier un evenement </button>
+</div>
+
+<ul *ngIf="formulaire_modif == 'util'">
+  <form (ngSubmit)=" valide_for_mod('util')">
+    <label for="nom">nom :</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="nom" id="nom">
+    <br>
+    <label for="prenom">prenom:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="prenom" id="prenom">
+    <br>
+    <label for="email">email:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="email" id="email">
+    <br>
+    <label for="password">password:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="mot_de_passe" id="password">
+    <br>
+    <label for="tel">tel:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="tel" id="tel">
+    <br>
+    <label for="id_utilisateur">id_utilisateur pour changement :</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_utilisateur" id="id_utilisateur">
+    <br>
+    
+    <input type="submit" value="Ajouter utilisateur">
+  </form>
+ </ul>
+ <ul *ngIf="formulaire_modif == 'etud'">
+  <form (ngSubmit)="valide_for_mod('etud')">
+    <label for="id_etudiant">id_etudiant:</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_etudiant" id="id_etudiant">
+    <br>
+    <label for="diplome_etudiant">diplome_etudiant:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="diplome_etudiant" id="diplome_etudiant">
+    <br>
+    <label for="id_filiere">id_filiere:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_filiere" id="id_filiere">
+    <br>
+    
+    
+    <input type="submit" value="Ajouter utilisateur">
+  </form>
+</ul>
+<ul *ngIf="formulaire_modif == 'prof'">
+  <form (ngSubmit)="valide_for_mod('enseignant')">
+    <label for="id_utilisateur">id_enseignant:</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_utilisateur" id="id_utilisateur">
+    <br>
+    <label for="responsabilite_ens">responsabilite_ens:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="responsabilite_ens" id="responsabilite_ens">
+    <br>
+    <label for="volume_horaire">volume_horaire:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="volume_horaire" id="volume_horaire">
+    <br>
+    
+    
+    <input type="submit" value="Ajouter utilisateur">
+  </form>
+</ul>
+<ul *ngIf="formulaire_modif == 'fil'">
+  <form (ngSubmit)="valide_for_mod('filiere')">
+    <label for="id_filiere">id_filiere:</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_filiere" id="id_filiere">
+    <br>
+    <label for="nom_filiere">nom_filiere:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="nom_filliere" id="nom_filiere">
+    <br>
+    <label for="description">description:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="description" id="description">
+    <br>
+    <label for="niveau">niveau:</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="niveau" id="niveau">
+    <br>
+    <label for="nombre_annee">nombre_annee:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="nombre_annee" id="nombre_annee">
+    <br>
+    <label for="id_responsable">id_responsable:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_responsable" id="id_responsable">
+    <br>    
+    
+    <input type="submit" value="Ajouter utilisateur">
+  </form>
+</ul>
+<ul *ngIf="formulaire_modif == 'cours'">
+  <form (ngSubmit)="valide_for_mod('cours')">
+    <label for="id_enseignant">id_enseignant:</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_enseignant" id="id_enseignant">
+    <br>
+    <label for="id_ue">id_ue:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_ue" id="id_ue">
+    <br>
+    <label for="id_cours">id_cours:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_cours" id="id_cours">
+    <br>
+    
+    
+    <input type="submit" value="Ajouter utilisateur">
+  </form>
+</ul>
+<ul *ngIf="formulaire_modif == 'ue'">
+  <form (ngSubmit)="valide_for_mod('ue')">
+    <label for="id_filiere">id_filiere:</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_filiere" id="id_filiere">
+    <br>
+    <label for="id_ue">id_ue:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_ue" id="id_ue">
+    <br>
+    <label for="libelle_ue">libelle_ue:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="libelle_ue" id="libelle_ue">
+    <br>
+    <label for="description">description:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="description" id="description">
+    <br>
+    
+    
+    <input type="submit" value="Ajouter utilisateur">
+  </form>
+</ul>
+<ul *ngIf="formulaire_modif == 'edt'">
+  <form (ngSubmit)="valide_for_mod('edt')">
+    <label for="id_edt">id_edt:</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_edt" id="id_edt">
+    <br>
+    <label for="id_filiere">id_filiere:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_filiere" id="id_filiere">
+    <br>
+    <label for="id_cours">id_cours:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_cours" id="id_cours">
+    <br>
+    <label for="date_debut">date_debut:</label>
+    <input type="date"  [ngModelOptions]="{standalone: true}" [(ngModel)]="date_debut" id="date_debut">
+    <br>
+    <label for="date_fin">date_fin:</label>
+    <input type="date"  [ngModelOptions]="{standalone: true}" [(ngModel)]="date_fin" id="date_fin">
+    <br>
+    <label for="type_cours">type_cours:</label>
+    <input type="description"  [ngModelOptions]="{standalone: true}" [(ngModel)]="type_cours" id="type_cours">
+    <br>
+    
+    
+    <input type="submit" value="Ajouter utilisateur">
+  </form>
+</ul>
+
+
+<h2>pour suppresion </h2>
+<div class="button-container">
+  <button (click)="supprimer_for('etud')">Supprimer un etudiant </button>
+  <button (click)="supprimer_for('prof')">Supprimer un enseignant </button>
+  <button (click)="modifier_for('util')">Modifier un utilisateur </button>
+
+</div>
+<div class="button-container">
+  <button (click)="supprimer_for('fil')">Supprimer une filiere </button>
+  <button (click)="supprimer_for('cours')">Supprimer un cours </button>
+  <button (click)="supprimer_for('ue')">Supprimer une UE </button>
+</div>
+<div class="button-container">
+  <button (click)="supprimer_for('edt')">Supprimer un evenement </button>
+  <button (click)="supprimer_for('util')">Supprimer un utilisateur </button>  
+</div>
+ <ul *ngIf="formulaire_supp == 'util'">
+  <form (ngSubmit)="supp_for('util')">
+    <label for="id_utilisateur">id_utilisateur:</label>
+    <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_utilisateur" id="id_utilisateur">
+    <br>
+    <input type="submit" value="Ajouter utilisateur">
+  </form>
+</ul>
+  <ul *ngIf="formulaire_supp == 'etud'">
+    <form (ngSubmit)="supp_for('etud')">
+      <label for="id_utilisateur">id_etudiant:</label>
+      <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_utilisateur" id="id_utilisateur">
+      <br>
+      
+      
+      
+      <input type="submit" value="Ajouter utilisateur">
+    </form>
+  </ul>
+  <ul *ngIf="formulaire_supp == 'prof'">
+    <form (ngSubmit)="supp_for('enseignant')">
+      <label for="id_utilisateur">id_utilisateur:</label>
+      <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_utilisateur" id="id_utilisateur">
+      <br>
+      
+      <input type="submit" value="Ajouter utilisateur">
+    </form>
+  </ul>
+  <ul *ngIf="formulaire_supp == 'fil'">
+    <form (ngSubmit)="supp_for('filiere')">
+      <label for="id_filiere">id_filiere:</label>
+      <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_filiere" id="id_filiere">
+      <br>
+      
+      <input type="submit" value="Ajouter utilisateur">
+    </form>
+  </ul>
+  <ul *ngIf="formulaire_supp == 'cours'">
+    <form (ngSubmit)="supp_for('cours')">
+      <label for="id_cours">id_cours:</label>
+      <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_cours" id="id_cours">
+      <br>
+      <input type="submit" value="Ajouter utilisateur">
+    </form>
+  </ul>
+  <ul *ngIf="formulaire_supp == 'ue'">
+    <form (ngSubmit)="supp_for('ue')">
+      <label for="id_ue">id_ue:</label>
+      <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_ue" id="id_ue">
+      <br>
+      
+      
+      
+      <input type="submit" value="Ajouter utilisateur">
+    </form>
+  </ul>
+  <ul *ngIf="formulaire_supp == 'edt'">
+    <form (ngSubmit)="supp_for('edt')">
+        <label for="id_edt">id_edt:</label>
+        <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="id_edt" id="id_edt">
+        
+        
+        
+      <input type="submit" value="Ajouter utilisateur">
+    </form>
+  </ul>

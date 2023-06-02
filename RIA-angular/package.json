@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@angular/core": "^16.0.4",
+    "@angular/forms": "^16.0.4",
+    "@angular/platform-browser": "^16.0.4"
+  }
+}
