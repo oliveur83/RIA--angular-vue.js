@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Mon Application Vue.js</title>
+</head>
+<body>
+
+  tototo
+    <div id="app">
+        <ul>
+            <li v-for="item in apiResponse">
+                <a v-bind:href="item.url">{{ item.name }}</a>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+            apiResponse: [
+                { name: 'GitHub', url: 'https://www.github.com' },
+                { name: 'Twitter', url: 'https://www.twitter.com' },
+                { name: 'Netlify', url: 'https://www.netlify.com' }
+            ]},
+      computed: {
+        totalAmount() {
+          return this.costOfApples + this.costOfBananas + this.costOfCoconuts
+        }
+      }
+    })
+      </script>
+</body>
+</html>
